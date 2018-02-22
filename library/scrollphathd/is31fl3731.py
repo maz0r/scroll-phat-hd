@@ -60,7 +60,7 @@ LED_GAMMA = [
 222,224,227,229,231,233,235,237,239,241,244,246,248,250,252,255]
 
 class Matrix:
-    _width = 17
+    _width = 15
     _height = 7
 
     def __init__(self, i2c, address=0x74, gamma_table=None):
@@ -135,7 +135,7 @@ class Matrix:
         self._bank(0)
 
         # Enable all LEDs
-        self.i2c.write_i2c_block_data(self.address, 0, [255] * 17)
+        self.i2c.write_i2c_block_data(self.address, 0, [255] * 15)
 
         atexit.register(self._exit)
 
@@ -185,7 +185,7 @@ class Matrix:
     def scroll(self, x=1, y=0):
         """Offset the buffer by x/y pixels
 
-        Scroll pHAT HD displays an 17x7 pixel window into the bufer,
+        Scroll pHAT HD displays an 15x7 pixel window into the bufer,
         which starts at the left offset and wraps around.
 
         The x and y values are added to the internal scroll offset.
@@ -203,7 +203,7 @@ class Matrix:
     def scroll_to(self, x=0, y=0):
         """Scroll the buffer to a specific location.
 
-        Scroll pHAT HD displays a 17x7 pixel window into the buffer,
+        Scroll pHAT HD displays a 15x7 pixel window into the buffer,
         which starts at the left offset and wraps around.
 
         The x and y values set the internal scroll offset.
@@ -342,8 +342,8 @@ class Matrix:
 
         :param x: Offset x - distance of the area from the left of the buffer
         :param y: Offset y - distance of the area from the top of the buffer
-        :param width: Width of the area (default is 17)
-        :param height: Height of the area (default is 7)
+        :param width: Width of the area (default is 15)
+        :param height: Height of the area (default is 15)
 
         """
 
@@ -358,7 +358,7 @@ class Matrix:
         :param brightness:  Maximum graph brightness (from 0.0 to 1.0)
         :param x: x position of graph in display buffer (default 0)
         :param y: y position of graph in display buffer (default 0)
-        :param width: width of graph in display buffer (default 17)
+        :param width: width of graph in display buffer (default 15)
         :param height: height of graph in display buffer (default 7)
         :return: None
 
@@ -475,7 +475,7 @@ class Matrix:
         """Show the buffer contents on the display.
 
         The buffer is copied, then  scrolling, rotation and flip y/x
-        transforms applied before taking a 17x7 slice and displaying.
+        transforms applied before taking a 15x7 slice and displaying.
 
         """
 
@@ -580,7 +580,7 @@ class Matrix:
 
 
 class ScrollPhatHD(Matrix):
-    width = 17
+    width = 15
     height = 7
 
     def _pixel_addr(self, x, y):
