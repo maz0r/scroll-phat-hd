@@ -52,7 +52,7 @@ high – The highest possible value (default max(values))
 brightness – Maximum graph brightness (from 0.0 to 1.0)  
 x – x position of graph in display buffer (default 0)  
 y – y position of graph in display buffer (default 0)  
-width – width of graph in display buffer (default 17)  
+width – width of graph in display buffer (default 15)  
 height – height of graph in display buffer (default 7)  
 Returns: None  
 
@@ -66,7 +66,7 @@ Parameters:
 brightness – Brightness of pixels  
 x – Offset x - distance of the area from the left of the buffer  
 y – Offset y - distance of the area from the top of the buffer  
-width – Width of the area (default is 17)  
+width – Width of the area (default is 15)  
 height – Height of the area (default is 7)  
 
 ## Clear An Area
@@ -77,7 +77,7 @@ scrollphathd.clear_rect(x, y, width, height)
 Parameters:  
 x – Offset x - distance of the area from the left of the buffer  
 y – Offset y - distance of the area from the top of the buffer  
-width – Width of the area (default is 17)  
+width – Width of the area (default is 15)  
 height – Height of the area (default is 7)  
 
 ## Display Buffer

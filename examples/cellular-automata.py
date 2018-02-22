@@ -41,7 +41,7 @@ def mainloop():
     loopCount = 0
 
     # define the matrix of cells and rows that we will be displaying
-    matrix = numpy.zeros((7, 17), dtype=numpy.int)
+    matrix = numpy.zeros((7, 15), dtype=numpy.int)
 
     # set the initial condition of the first row
     # "dot" = single cell at position (0,8); top row, middle LED
@@ -61,7 +61,7 @@ def mainloop():
 
         # redraw first so that it shows the initial contitions when first run
         for y in range(0, 7):
-            for x in range(0, 17):
+            for x in range(0, 15):
                 scrollphathd.pixel(x, y, matrix[y, x])
 
         scrollphathd.show()
@@ -73,7 +73,7 @@ def mainloop():
             # reset a bunch of stuff
             loopCount = 0
             row = 0
-            matrix = numpy.zeros((7, 17), dtype=numpy.int)
+            matrix = numpy.zeros((7, 15), dtype=numpy.int)
             matrix[0] = firstRow
             # get a new rule
             rules = numpy.roll(rules, -1, axis=0)
@@ -83,13 +83,13 @@ def mainloop():
         inputRow = matrix[row]
 
         # make an empty array to fill with values
-        outputRow = numpy.zeros((17), dtype=numpy.int)
+        outputRow = numpy.zeros((15), dtype=numpy.int)
 
         #  the secret sauce...
         #  step through each cell in the output row, calculate its value
         #  from the state of the input cell above and its left and right neighbour
 
-        for x in range(0, 17):
+        for x in range(0, 15):
 
             #  for each output cell, get the values of the input cell
             #  and its left and right neighbours.
@@ -102,7 +102,7 @@ def mainloop():
 
             a = inputRow[x-1] if x > 0 else inputRow[16]
             b = inputRow[x]
-            c = inputRow[x+1] if x < 16 else inputRow[0]
+            c = inputRow[x+1] if x < 14 else inputRow[0]
 
 
             #  a, b and c now contain the states of the three input cells
@@ -142,7 +142,7 @@ def mainloop():
 
             #  ok, so lets consider the first evolution of rule 30 starting
             #  with a single dot in the center of the first row.
-            #  (using a row of seven cells, 17 is too many to type!)
+            #  (using a row of seven cells, 15 is too many to type!)
 
             #  given row 0 =>   0001000
 
